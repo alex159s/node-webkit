@@ -52,6 +52,21 @@
   return FALSE;
 }
 
+- (void)closeAllWindowsQuit:(id)sender {
+  nwapi::App::CloseAllWindows(false, true);
+}
+
+- (void)handleQuitEvent:(NSAppleEventDescriptor*)event withReplyEvent:(NSAppleEventDescriptor*)replyEvent
+{
+  nwapi::App::CloseAllWindows(false, true);
+}
+
+- (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender
+{
+  nwapi::App::CloseAllWindows(false, true);
+}
+
+
 - (void) applicationDidFinishLaunching: (NSNotification *) note {
   // Initlialize everything here
   content::ShellContentBrowserClient* browser_client = 

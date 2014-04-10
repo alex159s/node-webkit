@@ -25,6 +25,13 @@
 
 @interface AppController : NSObject<NSApplicationDelegate> {
 }
+
+- (void)closeAllWindowsQuit:(id)sender;
+
+- (void)handleQuitEvent:(NSAppleEventDescriptor*)event withReplyEvent:(NSAppleEventDescriptor*)replyEvent;
+
+- (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender;
+
 @end
 
 #endif  // CONTENT_NW_SRC_BROWSER_APP_CONTROLLER_MAC_H_
