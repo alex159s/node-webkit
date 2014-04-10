@@ -281,6 +281,17 @@ void Window::Call(const std::string& method,
     CookieRemove(arguments);
   } else if (method == "CookieSet") {
     CookieSet(arguments);
+  } else if (method == "SendCustomEvent") {
+    std::string event;
+    if (arguments.GetString(0, &event)) {
+      ListValue args;
+      const Value* val;
+      for (size_t idx = 1; idx < arguments.GetSize(); ++idx) {
+        arguments.Get(idx, &val);
+        args.Append(val->DeepCopy());
+      }
+      shell_->SendEvent(event, args);
+    }
   } else {
     NOTREACHED() << "Invalid call to Window method:" << method
                  << " arguments:" << arguments;

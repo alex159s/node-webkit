@@ -479,4 +479,15 @@ Window.prototype.capturePage = function(callback, image_format_options) {
         return CallObjectMethod(this, 'EvaluateScript', frame, script);
     };
 
+    Window.prototype.send = function(eventName /* ... arguments ... */) {
+      if (!eventName) {
+        throw new Error("Need an eventName");
+      }
+      var args = [ eventName ];
+      for (var i = 1; i < arguments.length; i++) {
+        args.push(arguments[i])
+      };
+      CallObjectMethod(this, 'SendCustomEvent', args);
+    };
+
 }  // function Window.init
