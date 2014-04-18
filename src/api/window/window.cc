@@ -292,6 +292,10 @@ void Window::Call(const std::string& method,
       }
       shell_->SendEvent(event, args);
     }
+  } else if (method == "SetForceClose") {
+    bool val;
+    if (arguments.GetBoolean(0, &val))
+    shell_->set_force_close(val);
   } else {
     NOTREACHED() << "Invalid call to Window method:" << method
                  << " arguments:" << arguments;

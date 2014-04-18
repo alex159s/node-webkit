@@ -490,4 +490,8 @@ Window.prototype.capturePage = function(callback, image_format_options) {
       CallObjectMethod(this, 'SendCustomEvent', args);
     };
 
+    Window.prototype.setForceClose = function(val) {
+      CallObjectMethod(this, 'SetForceClose', [val]);
+    }
+
 }  // function Window.init
